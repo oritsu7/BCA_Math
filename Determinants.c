@@ -8,6 +8,7 @@ int main(){
     int mat1[2][2] = {{4,6}, {2,5}};
     int mat2[3][3] = {{2, 0, 5}, {3 ,1, 1}, {1, 4, 6}};
     int mat3[3][3] = {{3, 5, -7}, {4, 1, -12}, {2, 9, -3}};
+    int mat4[3][3] = {0};
     int constant[3] = {13, 6, 20};
 
     int x = determinant(num1, mat1);
@@ -16,5 +17,9 @@ int main(){
     printf("%d\n", y);
 
     cramers_rule(&a, &b, &c, mat3, constant);
-    printf("A: %d B: %d C: %d", a, b, c);
+    printf("A: %d B: %d C: %d\n", a, b, c);
+
+    addMat(3, mat2, mat3, mat4);
+    traverseMat(3, mat4);
 }
+

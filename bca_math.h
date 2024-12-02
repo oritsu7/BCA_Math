@@ -1,4 +1,5 @@
-// Function to calculate the determinant of a matrix
+#include<stdio.h>
+
 int determinant(int n, int mat[n][n]) { // ? is there an another way to do this? (mat[n][n])
     if (n == 2) {
         return (mat[0][0] * mat[1][1]) - (mat[0][1] * mat[1][0]);
@@ -58,4 +59,22 @@ void cramers_rule(int* x, int* y, int* z, int mat[3][3], int *constant){
     *x = det_x/det;
     *y = det_y/det;
     *z = det_z/det;
+}
+
+// addition of matrix 
+void addMat(int n, int mat1[n][n], int mat2[n][n], int mat3[n][n]){
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            mat3[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+}
+// print matrix
+void traverseMat(int n, int mat[n][n]){
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }    
 }
