@@ -1,4 +1,25 @@
 #include<stdio.h>
+#include<stdbool.h>
+
+
+// prototypes of the functions
+void swap(int *a, int *b);
+int determinant(int n, int mat[n][n]); 
+void cramers_rule(int* x, int* y, int* z, int mat[3][3], int *constant);
+void addMat(int n, int mat1[n][n], int mat2[n][n], int mat3[n][n]);
+void traverseMat(int n, int mat[n][n]);
+void trans_second(int n, int mat[n][n], int trans[n][n]);
+void transpose(int n, int mat[n][n]);
+bool is_symmetric(int n, int mat[n][n]);
+void create_I_Mat(int n, int mat[n][n]);
+
+
+// swap func
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
 int determinant(int n, int mat[n][n]) { // ? is there an another way to do this? (mat[n][n])
     if (n == 2) {
@@ -69,12 +90,61 @@ void addMat(int n, int mat1[n][n], int mat2[n][n], int mat3[n][n]){
         }
     }
 }
+
+// multiplication of matrix 
+
+
 // print matrix
 void traverseMat(int n, int mat[n][n]){
+    printf("\n");
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
             printf("%d ", mat[i][j]);
         }
         printf("\n");
     }    
+    printf("\n");
 }
+
+// transpose of a matrix in a second matrix
+void trans_second(int n, int mat[n][n], int trans[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            trans[j][i] = mat[i][j];
+        }
+    }
+}
+
+// transpose of a matrix
+void transpose(int n, int mat[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) { 
+            swap(&mat[i][j], &mat[j][i]);
+        }
+    }
+}
+
+bool is_symmetric(int n, int mat[n][n]){
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            if(mat[i][j] != mat[j][i]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// create identity matrix
+void create_I_Mat(int n, int mat[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) {
+                mat[i][j] = 1;
+            } else {
+                mat[i][j] = 0;
+            }
+        }
+    }
+}
+
