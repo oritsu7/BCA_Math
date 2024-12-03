@@ -12,6 +12,7 @@ void trans_second(int n, int mat[n][n], int trans[n][n]);
 void transpose(int n, int mat[n][n]);
 bool is_symmetric(int n, int mat[n][n]);
 void create_I_Mat(int n, int mat[n][n]);
+void mulMat(int m, int n, int mat1[m][n], int q, int r, int mat2[q][r], int res[m][r]);
 
 
 // swap func
@@ -91,7 +92,22 @@ void addMat(int n, int mat1[n][n], int mat2[n][n], int mat3[n][n]){
     }
 }
 
-// multiplication of matrix 
+// Multiplication of matrix
+void mulMat(int m, int n, int mat1[m][n], int q, int r, int mat2[q][r], int res[m][r]) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < r; j++) {
+            res[i][j] = 0;
+        }
+    }
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < r; j++) {
+            for (int k = 0; k < n; k++) {
+                res[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
 
 
 // print matrix

@@ -30,5 +30,25 @@ int main(){
     traverseMat(r, mat2);
     if(is_symmetric(r, sym))
         printf("Matrix is symmetric");
+    else
+        printf("Matrix is not symmetric");
+    
+
+    int mat5[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    int mat6[3][2] = {
+        {7, 8},
+        {9, 10},
+        {11, 12}
+    };
+
+    int res[2][2]; 
+
+    mulMat(2, 3, mat5, 3, 2, mat6, res);
+    traverseMat(2, res);
+
 }
 
